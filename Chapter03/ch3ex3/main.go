@@ -9,8 +9,8 @@ import (
 func main() {
 	// Tracks the timestamp of the last request to the webserver
 	var lastRequestMap map[string]time.Time = map[string]time.Time{
-		"example.com":  time.Time{},
-		"packtpub.com": time.Time{},
+		"example.com":  time.Now(),
+		"packtpub.com": time.Now(),
 	}
 
 	// The maximum number of requests we will make

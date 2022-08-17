@@ -23,15 +23,15 @@ func main() {
 	grp := data.FindGroup("Go-http-client/1.1")
 	if grp != nil {
 		testUrls := []string{
-			// These paths are all permissable
+			// Some of these paths are permissable, some not.
 			"/all",
 			"/all?search=Go",
 			"/bundles",
-
-			// These paths are not
 			"/contact/",
 			"/search/",
 			"/user/password/",
+			"/report/",
+			"/var/",
 		}
 
 		for _, url := range testUrls {

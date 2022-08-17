@@ -26,7 +26,7 @@ func main() {
 			// Sleep the difference between the pageDelay and elapsedTime
 			var timeDiff time.Duration = pageDelay - elapsedTime
 			fmt.Printf("Sleeping for %.2f (s)\n", timeDiff.Seconds())
-			time.Sleep(pageDelay - elapsedTime)
+			time.Sleep(timeDiff)
 		}
 
 		// Just for this example, we are not processing the response

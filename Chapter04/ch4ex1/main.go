@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 )
@@ -13,13 +13,13 @@ func main() {
 		panic(err)
 	}
 
-	data, err := ioutil.ReadAll(resp.Body)
+	data, err := io.ReadAll(resp.Body)
 	if err != nil {
 		panic(err)
 	}
 
 	stringBody := string(data)
 
-	numLinks := strings.Count(stringBody, "<a")
+	numLinks := strings.Count(stringBody, "<a href=")
 	fmt.Printf("Packt Publishing homepage has %d links!\n", numLinks)
 }

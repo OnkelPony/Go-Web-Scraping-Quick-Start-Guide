@@ -1,10 +1,9 @@
 package main
 
 import (
-	"io/ioutil"
-
 	"github.com/gregjones/httpcache"
 	"github.com/gregjones/httpcache/diskcache"
+	"io"
 )
 
 func main() {
@@ -17,19 +16,19 @@ func main() {
 	cachedClient := cache.Client()
 
 	// Make the initial request
-	println("Caching: http://www.example.com/index.html")
-	resp, err := cachedClient.Get("http://www.example.com/index.html")
+	println("Caching: https://nakit.cz")
+	resp, err := cachedClient.Get("https://nakit.cz")
 	if err != nil {
 		panic(err)
 	}
 
 	// httpcache requires you to read the body in order to cache the response
-	ioutil.ReadAll(resp.Body)
+	io.ReadAll(resp.Body)
 	resp.Body.Close()
 
 	// Request index.html again
-	println("Requesting: http://www.example.com/index.html")
-	resp, err = cachedClient.Get("http://www.example.com/index.html")
+	println("Requesting: https://nakit.cz")
+	resp, err = cachedClient.Get("https://nakit.cz")
 	if err != nil {
 		panic(err)
 	}

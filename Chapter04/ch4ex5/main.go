@@ -13,7 +13,7 @@ func main() {
 		panic(err)
 	}
 
-	dealTextNodes := htmlquery.Find(doc, `//div[@class="dotd-main-book-summary float-left"]//text()`)
+	dealTextNodes := htmlquery.Find(doc, `//div[@class="free_learning__product_description"]//text()`)
 
 	if err != nil {
 		panic(err)
@@ -25,7 +25,7 @@ func main() {
 	for _, node := range dealTextNodes {
 		text := strings.TrimSpace(node.Data)
 		matchTagNames, _ := regexp.Compile("^(div|span|h2|br|ul|li)$")
-		text = matchTagNames.ReplaceAllString(text,"")
+		text = matchTagNames.ReplaceAllString(text, "")
 		if text != "" {
 			println(text)
 		}

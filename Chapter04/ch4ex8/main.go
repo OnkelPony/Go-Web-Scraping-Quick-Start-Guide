@@ -2,13 +2,18 @@ package main
 
 import (
 	"bufio"
+	"net/http"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
 func main() {
-	doc, err := goquery.NewDocument("https://www.packtpub.com/packt/offers/free-learning")
+	resp, err := http.Get("https://web.archive.org/web/20170223095930/https://www.packtpub.com/packt/offers/free-learning")
+	if err != nil {
+		panic(err)
+	}
+	doc, err := goquery.NewDocumentFromReader(resp.Body)
 	if err != nil {
 		panic(err)
 	}
@@ -19,7 +24,7 @@ func main() {
 	reader := bufio.NewReader(strings.NewReader(rawText))
 
 	var line []byte
-	for err == nil{
+	for err == nil {
 		line, _, err = reader.ReadLine()
 		trimmedLine := strings.TrimSpace(string(line))
 		if trimmedLine != "" {

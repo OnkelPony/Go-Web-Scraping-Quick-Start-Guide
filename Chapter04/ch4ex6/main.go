@@ -8,12 +8,12 @@ import (
 )
 
 func main() {
-	doc, err := htmlquery.LoadURL("https://www.packtpub.com/latest-releases")
+	doc, err := htmlquery.LoadURL("https://web.archive.org/web/20170223095930/https://www.packtpub.com/latest-releases")
 	if err != nil {
 		panic(err)
 	}
 
-	nodes := htmlquery.Find(doc, `//div[@class="landing-page-row cf"]/div[@itemtype="http://schema.org/Product"]`)
+	nodes := htmlquery.Find(doc, `//div[@itemtype="http://schema.org/Product"]`)
 	if err != nil {
 		panic(err)
 	}
@@ -36,6 +36,6 @@ func main() {
 				}
 			}
 		}
-		fmt.Printf("%s ($%0.2f)\n", title, price)
+		fmt.Printf("%-54s ($%6.2f)\n", title, price)
 	}
 }

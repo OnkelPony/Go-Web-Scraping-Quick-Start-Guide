@@ -9,8 +9,8 @@ func main() {
 	// The paths to these binaries will be different on your machine!
 
 	const (
-		seleniumPath    = "/home/vincent/Documents/workspace/Go/src/github.com/tebeka/selenium/vendor/selenium-server-standalone-3.14.0.jar"
-		geckoDriverPath = "/home/vincent/Documents/workspace/Go/src/github.com/tebeka/selenium/vendor/geckodriver-v0.23.0-linux64"
+		seleniumPath    = "/home/gio/go/pkg/mod/github.com/tebeka/selenium@v0.9.9/vendor/selenium-server.jar"
+		geckoDriverPath = "/home/gio/go/pkg/mod/github.com/tebeka/selenium@v0.9.9/vendor/geckodriver"
 	)
 
 	service, err := selenium.NewSeleniumService(
@@ -30,7 +30,7 @@ func main() {
 	}
 	defer wd.Quit()
 
-	err = wd.Get("https://www.packtpub.com/networking-and-servers/mastering-go")
+	err = wd.Get("https://www.packtpub.com/product/mastering-go/9781801079310")
 	if err != nil {
 		panic(err)
 	}

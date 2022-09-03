@@ -7,15 +7,15 @@ import (
 
 func startTicker() {
 	ticks := 0
-	for true {
+	for {
 		fmt.Println(ticks)
 		ticks++
-		time.Sleep(1 * time.Second)
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 
 func main() {
 	println("Starting ticker")
 	go startTicker()
-	time.Sleep(10 * time.Second)
+	time.Sleep(1 * time.Second)
 }
